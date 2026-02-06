@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de turnos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- Mensaje login -->
+        <div class="alert success">
+            ✔ ¡Logueado correctamente!
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Listado de Turnos</h1>
+
+            <div class="header-actions">
+                <input type="date" id="fechaFiltro">
+
+                <button class="btn btn-primary">Filtrar</button>
+                <button class="btn btn-secondary">Imprimir</button>
+            </div>
+        </div>
+
+        <!-- Info -->
+        <div class="alert info">
+            Mostrando turnos del día: <strong id="fechaActualTexto"></strong>
+        </div>
+
+
+        <!-- Tabla -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Mascota</th>
+                        <th>Fecha & Hora</th>
+                        <th>Servicio</th>
+                        <th>Profesional</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaTurnos"></tbody>
+            </table>
+        </div>
+
+        <!-- Footer tabla -->
+        <div class="table-footer">
+            <span id="contador"></span>
+            <div class="pagination">
+                <button>&lt;</button>
+                <span class="active">1</span>
+                <button>&gt;</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../src/core/admin.js"></script>
+</body>
+
+</html>
