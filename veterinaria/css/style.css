@@ -10,6 +10,10 @@
     --primary: #34767e;
     --secondary: white;
     --terciary: black;
+    --bg: #f4f6f8;
+    --error-bg: #fdecea;
+    --error-text: #9b2c2c;
+    --border-radius: 6px;
 }
 
 *{
@@ -97,7 +101,6 @@ nav ul li a:hover {
 }
 
 h1 {
-    /* font-family: 'Neutra'; */
     font-size: 4rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -196,4 +199,222 @@ footer nav a {
 
 footer nav a:hover {
     opacity: 0.7;
+    background-color: var(--secondary);
+}
+
+
+/* //Estilos para el formulario de login */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6f8fa, #eef2f4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background-color: var(--secondary);
+    width: 100%;
+    max-width: 520px;
+    min-width: 420px;
+    padding: 2rem 2.2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+    text-align: center;
+    margin-bottom: 1.8rem;
+    color: var(--primary);
+}
+
+.login-title h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(52, 118, 126, 0.15);
+}
+
+.error-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    padding: 0.6rem 0.7rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.error-box::before {
+    content: "⚠️";
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.65rem;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #2c646b;
+}
+
+
+/* Estilos para la tabla de turnos */
+/* ===============================
+   BASE
+   =============================== */
+
+.page {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.alert {
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert.success {
+    background: var(--secondary);
+    color: #2e7d32;
+}
+
+.alert.info {
+    background: var(--secondary);
+    color: var(--primary)
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+
+.btn {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--secondary)
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--primary);
+    color: var(--secondary)
+}
+
+th,
+td {
+    padding: 10px;
+    font-size: 13px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--secondary);
+}
+
+tbody tr:nth-child(even) {
+    background: var(--secondary);
+}
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.pagination {
+    display: flex;
+    gap: 6px;
+}
+
+.pagination span,
+.pagination button {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--secondary);
+    border: none;
+}
+
+.pagination .active {
+    background: var(--primary);
+    color: var(--secondary);
 }
