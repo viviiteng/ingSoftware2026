@@ -1,12 +1,4 @@
 @font-face {
-    font-family: 'Neutra';
-    src: url('../fonts/neutradisplaytitling-webfont.woff2') format('woff2'),
-        url('../fonts/neutradisplaytitling-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Montserrat';
     src: url('../fonts/montserrat-medium-webfont.woff2') format('woff2'),
         url('../fonts/montserrat-medium-webfont.woff') format('woff');
@@ -18,6 +10,16 @@
     --primary: #34767e;
     --secondary: white;
     --terciary: black;
+    --bg: #f4f6f8;
+    --error-bg: #fdecea;
+    --error-text: #9b2c2c;
+    --border-radius: 6px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat';
+    font-family:Arial, Helvetica, sans-serif;
     color: var(--terciary);
 }
 
