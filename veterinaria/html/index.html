@@ -6,78 +6,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinaria</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-    <div id="contenedorFormulario">
-        <form id="formReserva">
-            <h1>Reserva tu turno</h1>
+    <header>
+        <a href="#Inicio">
+            <img src="../img/loguito.png" alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#Inicio">Inicio</a>
+                </li>
+                <li><a href="#Servicios">Servicios</a></li>
+                <li>
+                    <a href="#Galeria">Galeria</a>
+                </li>
+                <li>
+                    <a href="#Reserva">Reserva</a>
+                </li>
+                <li>
+                    <a href="#Contacto">Contacto</a>
+                </li>
+                <li>
+                    <a href="../html/login.html">Iniciar Sesion</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="Inicio">
+        <div class="centrado">
+            <h1>CUIDAMOS LA SALUD DE TU MASCOTA</h1>
+            <p>Servicios veterinarios de calidad para el bienestar de tus mascotas. Agenda tu turno online de manera
+                rápida y sencilla</p>
+            <a href="#Reserva">Reservar</a>
+        </div>
+    </section>
+    <section id="Servicios"></section>
+    <section id="Galeria"></section>
+    <section id="Reserva">
+        <div id="contenedorFormulario">
+            <form id="formReserva">
+                <h1>Reserva tu turno</h1>
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nMascota">Nombre de mascota</label>
+                        <input type="text" name="nMascota" id="nMascota" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoMascota">Tipo de mascota</label>
+                        <select name="tipoMascota" id="tipoMascota" required>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="tortuga">Tortuga</option>
+                            <option value="sapo">Sapo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoServicio">Tipo de servicio</label>
+                        <select name="tipoServicio" id="tipoServicio" required>
+                            <option value="">Seleccione un tipo de servicio</option>
+                            <option value="veterinaria">Veterinaria clínica</option>
+                            <option value="veterinaria">Cirugía veterinaria</option>
+                            <option value="estilismo">Corte de uñas e higiene básica</option>
+                            <option value="estilismo">Corte y estilismo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="contenedorProfesional" style="display: none;">
+                        <label for="profesional">Profesional</label>
+                        <select name="profesional" id="profesional" required>
+                            <option value="Primer profesional disponible">Primer profesional disponible</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="diaHora">Día y hora</label>
+                        <input type="datetime-local" id="diaHora" name="diaHora" placeholder="Seleccione día y hora"
+                            required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" name="telefono" required>
-                </div>
+                <button type="submit">Reservar</button>
+            </form>
+        </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" required>
-                </div>
+        <div id="contenedorConfirmacion" style="display: none;">
+            <div id="mensaje"></div>
+            <button id="btnOtroTurno">Reservar otro turno</button>
+        </div>
+    </section>
 
-                <div class="form-group">
-                    <label for="nMascota">Nombre de mascota</label>
-                    <input type="text" name="nMascota" id="nMascota" required>
-                </div>
+    <section id="Contacto"></section>
+    <footer>
+        <div class="footer-info">
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                <a
+                    href="https://www.google.com/maps?sca_esv=6e2c9a71c05a9bf4&rlz=1C1ALOY_esUY982UY982&output=search&q=google+maps+pocitos&source=lnms&fbs=ADc_l-bpk8W4E-qsVlOvbGJcDwpnI1DeJY3rv82Mj8cb1NlB8O5Ja7ltU6TUD1-FQudO6ZcsnC28ji2F5j41jW21eS-kx42C25vA1bFaVHO2AM4Dr79VdATlj7t0QWC-Vm7Qngh9bM7PHDQLeMMVhH-ZzL67ds_BiPEnhIoeUFgGWrxLlcOGvltmyp6N1aTNy1GefhcZ0FU8mxutUn9kLqYMM7I4qjJjHA&entry=mc&ved=1t:200715&ictx=111">
+                    Pocitos 456, Montevideo, Uruguay
+                </a>
 
-                <div class="form-group">
-                    <label for="tipoMascota">Tipo de mascota</label>
-                    <select name="tipoMascota" id="tipoMascota" required>
-                        <option value="perro">Perro</option>
-                        <option value="gato">Gato</option>
-                        <option value="tortuga">Tortuga</option>
-                        <option value="sapo">Sapo</option>
-                    </select>
-                </div>
+            </p>
 
-                <div class="form-group">
-                    <label for="tipoServicio">Tipo de servicio</label>
-                    <select name="tipoServicio" id="tipoServicio" required>
-                        <option value="">Seleccione un tipo de servicio</option>
-                        <option value="veterinaria">Veterinaria clínica</option>
-                        <option value="veterinaria">Cirugía veterinaria</option>
-                        <option value="estilismo">Corte de uñas e higiene básica</option>
-                        <option value="estilismo">Corte y estilismo</option>
-                    </select>
-                </div>
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +598 99 123 456
+            </p>
+            <p>
+                <i class="fa-brands fa-facebook-f"></i>
+                <a href="https://www.facebook.com/Huellas.fb" target="_blank">
+                    Huellas.fb
+                </a>
+            </p>
 
-                <div class="form-group" id="contenedorProfesional" style="display: none;">
-                    <label for="profesional">Profesional</label>
-                    <select name="profesional" id="profesional" required>
-                        <option value="Primer profesional disponible">Primer profesional disponible</option>
-                    </select>
-                </div>
-
-                <div class="form-group full">
-                    <label for="diaHora">Día y hora</label>
-                    <input type="datetime-local" id="diaHora" name="diaHora" placeholder="Seleccione día y hora"
-                        required>
-                </div>
-            </div>
-
-            <button type="submit">Reservar</button>
-        </form>
-    </div>
-
-    <div id="contenedorConfirmacion" style="display: none;">
-        <div id="mensaje"></div>
-        <button id="btnOtroTurno">Reservar otro turno</button>
-    </div>
-
+            <p>
+                <i class="fa-brands fa-instagram"></i>
+                <a href="https://www.instagram.com/Huellas.ig" target="_blank">
+                    Huellas.ig
+                </a>
+            </p>
+        </div>
+        <div class="footer-bottom">
+            <a href="#Inicio">
+                <img src="../img/loguito.png" alt="Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#Inicio">Inicio</a>
+                    </li>
+                    <li><a href="#Servicios">Servicios</a></li>
+                    <li>
+                        <a href="#Galeria">Galeria</a>
+                    </li>
+                    <li>
+                        <a href="#Reserva">Reserva</a>
+                    </li>
+                    <li>
+                        <a href="#Contacto">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
     <script src="../src/core/reservas.js"></script>
 </body>
 
