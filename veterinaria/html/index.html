@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinaria</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+    <div id="contenedorFormulario">
+        <form id="formReserva">
+            <h1>Reserva tu turno</h1>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" name="telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nMascota">Nombre de mascota</label>
+                    <input type="text" name="nMascota" id="nMascota" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoMascota">Tipo de mascota</label>
+                    <select name="tipoMascota" id="tipoMascota" required>
+                        <option value="perro">Perro</option>
+                        <option value="gato">Gato</option>
+                        <option value="tortuga">Tortuga</option>
+                        <option value="sapo">Sapo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoServicio">Tipo de servicio</label>
+                    <select name="tipoServicio" id="tipoServicio" required>
+                        <option value="">Seleccione un tipo de servicio</option>
+                        <option value="veterinaria">Veterinaria clínica</option>
+                        <option value="veterinaria">Cirugía veterinaria</option>
+                        <option value="estilismo">Corte de uñas e higiene básica</option>
+                        <option value="estilismo">Corte y estilismo</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="contenedorProfesional" style="display: none;">
+                    <label for="profesional">Profesional</label>
+                    <select name="profesional" id="profesional" required>
+                        <option value="Primer profesional disponible">Primer profesional disponible</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="diaHora">Día y hora</label>
+                    <input type="datetime-local" id="diaHora" name="diaHora" placeholder="Seleccione día y hora"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit">Reservar</button>
+        </form>
+    </div>
+
+    <div id="contenedorConfirmacion" style="display: none;">
+        <div id="mensaje"></div>
+        <button id="btnOtroTurno">Reservar otro turno</button>
+    </div>
+
+    <script src="../src/core/reservas.js"></script>
 </body>
+
 </html>
