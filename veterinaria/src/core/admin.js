@@ -94,12 +94,10 @@ const hoy = new Date().toISOString().split("T")[0];
 fechaInput.value = hoy;
 fechaTexto.textContent = formatearFecha(hoy);
 
-// Render inicial FILTRADO
+// Render inicial sin filtro
 renderTabla(filtrarPorFecha(hoy));
 
-// ===============================
-// EVENTOS
-// ===============================
+// Render al filtrar
 btnFiltrar.addEventListener("click", () => {
     const fechaSeleccionada = fechaInput.value;
 
