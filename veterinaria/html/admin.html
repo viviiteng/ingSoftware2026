@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de turnos</title>
     <link rel="stylesheet" href="../css/style.css">
+     <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
     <div class="page">
-
-        <!-- Mensaje login -->
-        <div class="alert success">
-            ✔ ¡Logueado correctamente!
-        </div>
-
         <!-- Header -->
         <div class="header">
             <h1>Listado de Turnos</h1>

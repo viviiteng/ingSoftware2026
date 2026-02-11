@@ -7,7 +7,7 @@ const USER_CREDENTIALS = {
 
 const form = document.getElementById("loginForm");
 const errorMsg = document.getElementById("errorMsg");
-
+const errorMsg2 = document.getElementById("errorMsg2");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -27,7 +27,9 @@ form.addEventListener("submit", function (e) {
         localStorage.setItem("rol", USER_CREDENTIALS.rol);
 
         // Redirigir
-        window.location.href = "admin.html";
+        window.location.href = "../html/admin.html";
+    }else if( userInput == "" || passwordInput == "") {
+         errorMsg2.style.display = "flex";
     } else {
         // Mostrar error
         errorMsg.style.display = "flex";
