@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("formReserva");
     const mensaje = document.getElementById("mensaje");
+    const mensajeConfirmacion = document.getElementById("mensajeConfirmacion");
     const fechaInput = document.getElementById("diaHora");
     const tipoServicioSelect = document.getElementById("tipoServicio");
     const contenedorProfesional = document.getElementById("contenedorProfesional");
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const manana = new Date(hoy);
     manana.setDate(hoy.getDate() + 1);
-    manana.setHours(0, 0, 0, 0); // 👈 CLAVE
+    manana.setHours(0, 0, 0, 0);
 
     const limite = new Date(hoy);
     limite.setDate(hoy.getDate() + 15);
@@ -83,17 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!hayDisponibilidad(datos.servicio, datos.diaHora)) {
-            mostrarErrores(["No hay profesionales disponibles para ese horario"]);
-            return;
+        // Si eligió profesional específico
+        if (datos.profesional !== "Primer profesional disponible") {
+            if (!profesionalDisponible(datos.profesional, datos.servicio, datos.diaHora)) {
+                mostrarErrores(["Ese profesional ya tiene un turno en ese horario"]);
+                return;
+            }
+        } else {
+            // Si eligió automático
+            if (!hayDisponibilidad(datos.servicio, datos.diaHora)) {
+                mostrarErrores(["No hay profesionales disponibles para ese horario"]);
+                return;
+            }
         }
+
 
         if (datos.profesional === "Primer profesional disponible") {
             datos.profesional = asignarProfesional(datos.servicio, datos.diaHora);
         }
 
-        guardarReserva(datos);
-        mostrarConfirmacion(datos);
         guardarReserva(datos);
         mostrarConfirmacion(datos);
 
@@ -106,11 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     btnOtroTurno.addEventListener("click", () => {
-    mensaje.innerHTML = "";
+        mensaje.innerHTML = "";
 
-    contenedorConfirmacion.style.display = "none";
-    contenedorFormulario.style.display = "block";
-});
+        contenedorConfirmacion.style.display = "none";
+        contenedorProfesional.style.display = "none";
+        contenedorFormulario.style.display = "block";
+    });
 
 
     /* FUNCIONES*/
@@ -123,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mascota: form.nMascota.value.trim(),
             tipoMascota: form.tipoMascota.value,
             servicio: mapearServicio(form.tipoServicio.value),
+            servicioTexto: form.tipoServicio.options[form.tipoServicio.selectedIndex].text,
             profesional: form.profesional.value || "Primer profesional disponible",
             diaHora: form.diaHora.value
         };
@@ -157,6 +168,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return [...new Set(errores)];
     }
+
+    function profesionalDisponible(profesional, servicio, fechaHora) {
+        const reservas = obtenerReservas();
+
+        return !reservas.some(r =>
+            r.profesional === profesional &&
+            r.servicio === servicio &&
+            r.diaHora === fechaHora
+        );
+    }
+
 
     function hayDisponibilidad(servicio, fechaHora) {
         const reservas = obtenerReservas();
@@ -197,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function mostrarConfirmacion(d) {
-        mensaje.innerHTML = `
+        mensajeConfirmacion.innerHTML = `
       <h3>Reserva confirmada ✅</h3>
       <p><strong>Cliente:</strong> ${d.nombre}</p>
       <p><strong>Mascota:</strong> ${d.mascota} (${d.tipoMascota})</p>
