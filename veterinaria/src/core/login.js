@@ -27,7 +27,7 @@ form.addEventListener("submit", function (e) {
         localStorage.setItem("rol", USER_CREDENTIALS.rol);
 
         // Redirigir
-        window.location.href = "admin.html";
+        window.location.href = "../html/admin.html";
     } else {
         // Mostrar error
         errorMsg.style.display = "flex";
