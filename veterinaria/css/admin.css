@@ -80,7 +80,6 @@ input:focus {
     color: var(--error-text);
     padding: 0.6rem 0.7rem;
     border-radius: var(--border-radius);
-    font-size: 2rem;
     margin-bottom: 1.2rem;
 }
 

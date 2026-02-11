@@ -30,8 +30,10 @@ form.addEventListener("submit", function (e) {
         window.location.href = "../html/admin.html";
     }else if( userInput == "" || passwordInput == "") {
          errorMsg2.style.display = "flex";
+         errorMsg.style.display = "none";
     } else {
         // Mostrar error
         errorMsg.style.display = "flex";
+        errorMsg2.style.display = "none";
     }
 });
