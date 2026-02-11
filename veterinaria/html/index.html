@@ -50,6 +50,8 @@
             <form id="formReserva">
                 <h1>Reserva tu turno</h1>
 
+                <div id="mensaje"></div>
+
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -74,6 +76,7 @@
                     <div class="form-group">
                         <label for="tipoMascota">Tipo de mascota</label>
                         <select name="tipoMascota" id="tipoMascota" required>
+                            <option value="">Seleccione un tipo de mascota</option>
                             <option value="perro">Perro</option>
                             <option value="gato">Gato</option>
                             <option value="tortuga">Tortuga</option>
@@ -111,7 +114,7 @@
         </div>
 
         <div id="contenedorConfirmacion" style="display: none;">
-            <div id="mensaje"></div>
+            <div id="mensajeConfirmacion"></div>
             <button id="btnOtroTurno">Reservar otro turno</button>
         </div>
     </section>
