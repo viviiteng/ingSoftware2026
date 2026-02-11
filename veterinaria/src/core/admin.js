@@ -5,7 +5,7 @@
     const usuarioLogueado = localStorage.getItem("isAuthenticated");
     
     // Si no está logueado, redirigir al login
-    if (!usuarioLogueado) {
+    if (!usuarioLogueado || usuarioLogueado !== "true") {
         window.location.href = "../html/index.html";
         return;
     }
