@@ -1,35 +1,23 @@
-const turnos = [
-    {
-        nombre: "Ana Pérez",
-        telefono: "345-678-9012",
-        email: "ana.perez@gmail.com",
-        mascota: "Perro",
-        fecha: "2026-02-25",
-        hora: "09:00",
-        servicio: "Consulta Veterinaria",
-        profesional: "Dr. Juan Martínez"
-    },
-    {
-        nombre: "Carlos Gómez",
-        telefono: "456-789-0123",
-        email: "carlos.gomez@gmail.com",
-        mascota: "Gato",
-        fecha: "2026-02-25",
-        hora: "10:30",
-        servicio: "Peluquería",
-        profesional: "Laura Sánchez"
-    },
-    {
-        nombre: "Marta López",
-        telefono: "567-890-1234",
-        email: "marta@mail.com",
-        mascota: "Conejo",
-        fecha: "2026-02-26",
-        hora: "11:00",
-        servicio: "Vacunación",
-        profesional: "Dr. Juan Martínez"
+// ===============================
+// PROTECCIÓN DE ACCESO
+// ===============================
+(function verificarAcceso() {
+    const usuarioLogueado = localStorage.getItem("isAuthenticated");
+    
+    // Si no está logueado, redirigir al login
+    if (!usuarioLogueado) {
+        window.location.href = "../html/index.html";
+        return;
     }
-];
+    
+    // Si está logueado, mostrar el contenido
+    document.body.classList.add("loaded");
+})();
+
+// ===============================
+// CÓDIGO EXISTENTE
+// ===============================
+let turnos = JSON.parse(localStorage.getItem("reservas")) || [];
 
 const tbody = document.getElementById("tablaTurnos");
 const contador = document.getElementById("contador");
@@ -42,25 +30,58 @@ const fechaTexto = document.getElementById("fechaActualTexto");
 // UTILIDADES
 // ===============================
 function formatearFecha(fechaISO) {
-    const [y, m, d] = fechaISO.split("-");
-    return `${d}/${m}/${y}`;
+    const [year, month, day] = fechaISO.split("-");
+    const fecha = new Date(year, month - 1, day);
+    return fecha.toLocaleDateString("es-ES");
+}
+
+function obtenerFechaISO(diaHora) {
+    return diaHora.split("T")[0];
+}
+
+function ordenarTurnos(listaTurnos) {
+    return listaTurnos.sort((a, b) => {
+        // 1. Primero ordenar por fecha y hora
+        const fechaA = new Date(a.diaHora);
+        const fechaB = new Date(b.diaHora);
+        
+        if (fechaA.getTime() !== fechaB.getTime()) {
+            return fechaA - fechaB;
+        }
+        
+        // 2. Si la fecha y hora son iguales, ordenar por profesional
+        return a.profesional.localeCompare(b.profesional);
+    });
 }
 
 function filtrarPorFecha(fecha) {
-    return turnos.filter(t => t.fecha === fecha);
+    const turnosFiltrados = turnos.filter(t => obtenerFechaISO(t.diaHora) === fecha);
+    return ordenarTurnos(turnosFiltrados);
+}
+
+function obtenerTurnosFuturos(fechaReferencia) {
+    const hoy = new Date(fechaReferencia);
+    hoy.setHours(0, 0, 0, 0);
+    
+    const turnosFuturos = turnos.filter(t => {
+        const fechaTurno = new Date(t.diaHora);
+        return fechaTurno >= hoy;
+    });
+    
+    return ordenarTurnos(turnosFuturos);
 }
 
 // ===============================
 // RENDER
 // ===============================
-function renderTabla(lista) {
+function renderTabla(lista, esModoFuturo = false) {
     tbody.innerHTML = "";
 
     if (lista.length === 0) {
         tbody.innerHTML = `
             <tr>
                 <td colspan="7" style="text-align:center; padding:20px;">
-                    No hay turnos para la fecha seleccionada
+                    ${esModoFuturo ? 'No hay turnos futuros' : 'No hay turnos para la fecha seleccionada'}
                 </td>
             </tr>
         `;
@@ -69,13 +90,15 @@ function renderTabla(lista) {
     }
 
     lista.forEach(t => {
+        const fecha = new Date(t.diaHora);
+
         const tr = document.createElement("tr");
         tr.innerHTML = `
             <td>${t.nombre}</td>
             <td>${t.telefono}</td>
             <td>${t.email}</td>
-            <td>${t.mascota}</td>
-            <td>${formatearFecha(t.fecha)} ${t.hora}</td>
+            <td>${t.mascota} (${t.tipoMascota})</td>
+            <td>${fecha.toLocaleString("es-ES")}</td>
             <td>${t.servicio}</td>
             <td>${t.profesional}</td>
         `;
@@ -90,17 +113,25 @@ function renderTabla(lista) {
 // ===============================
 const hoy = new Date().toISOString().split("T")[0];
 
-// Setear fecha actual
 fechaInput.value = hoy;
-fechaTexto.textContent = formatearFecha(hoy);
+fechaTexto.textContent = `${formatearFecha(hoy)} y posteriores`;
 
-// Render inicial sin filtro
-renderTabla(filtrarPorFecha(hoy));
+renderTabla(obtenerTurnosFuturos(hoy), true);
 
-// Render al filtrar
 btnFiltrar.addEventListener("click", () => {
     const fechaSeleccionada = fechaInput.value;
-
     fechaTexto.textContent = formatearFecha(fechaSeleccionada);
-    renderTabla(filtrarPorFecha(fechaSeleccionada));
+    renderTabla(filtrarPorFecha(fechaSeleccionada), false);
 });
+
+// ===============================
+// CERRAR SESIÓN
+// ===============================
+const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+
+if (btnCerrarSesion) {
+    btnCerrarSesion.addEventListener("click", () => {
+        localStorage.removeItem("usuarioLogueado");
+        window.location.href = "../index.html";
+    });
+}
