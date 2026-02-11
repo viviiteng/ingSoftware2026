@@ -1,7 +1,8 @@
 :root {
-    --primary: #34767e;
+    --primary: #4f7f63;
     --secondary: white;
     --terciary: black;
+    --fourth: #417256; 
     --bg: #f4f6f8;
     --error-bg: #fdecea;
     --error-text: #9b2c2c;
