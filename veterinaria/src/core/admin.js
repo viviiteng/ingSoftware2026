@@ -99,7 +99,7 @@ function renderTabla(lista, esModoFuturo = false) {
             <td>${t.email}</td>
             <td>${t.mascota} (${t.tipoMascota})</td>
             <td>${fecha.toLocaleString("es-ES")}</td>
-            <td>${t.servicio}</td>
+            <td>${t.servicioTexto}</td>
             <td>${t.profesional}</td>
         `;
         tbody.appendChild(tr);
