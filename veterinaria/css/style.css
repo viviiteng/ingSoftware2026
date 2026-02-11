@@ -1,226 +1,18 @@
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/montserrat-medium-webfont.woff2') format('woff2'),
-        url('../fonts/montserrat-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-/* RESET BÁSICO*/
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: #f4f6f5;
-  color: #2e2e2e;
-}
-
-/*HEADER*/
-header {
-  background: linear-gradient(90deg, #4f7f63, #5f9475);
-  color: white;
-  padding: 16px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-weight: 600;
-}
-
-header small {
-  display: block;
-  font-size: 12px;
-  opacity: 0.9;
-}
-
-/* CONTENEDOR FORM */
-section {
-  max-width: 850px;
-  margin: 40px auto;
-  padding: 24px;
-}
-
-form {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #4f7f63;
-}
-
-/*GRID FORM */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group.full {
-  grid-column: 1 / -1;
-}
-
-/* LABELS & INPUTS*/
-label {
-  font-size: 13px;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-input,
-select {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #cfd8d3;
-  font-size: 14px;
-  transition: border 0.2s;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #5f9475;
-}
-
-/*ERRORES*/
-.input-error {
-  border-color: #c0392b;
-}
-
-.error-text {
-  font-size: 12px;
-  color: #c0392b;
-  margin-top: 4px;
-}
-
-.error-box {
-  background-color: #fdecea;
-  border: 1px solid #f5c6cb;
-  color: #8a1f17;
-  padding: 12px 16px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-.error-box ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-/*BOTÓN */
-button {
-  margin-top: 24px;
-  width: 100%;
-  padding: 12px;
-  background-color: #4f7f63;
-  color: white;
-  font-size: 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #3f6d55;
-}
-
-/* CONTENEDOR GENERAL CONFIRMACIÓN*/
-#contenedorConfirmacion {
-  max-width: 680px;
-  margin: 40px auto;
-  padding: 40px 32px;
-  background: #f6f8f7;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* ICONO CHECK */
-.confirmacion-icono {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: #4f7f62;
-  color: white;
-  font-size: 36px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* TITULO */
-.confirmacion-titulo {
-  font-size: 22px;
-  color: #4f7f62;
-  font-weight: 600;
-  margin-bottom: 28px;
-}
-
-/* TARJETA DATOS */
-.confirmacion-datos {
-  background: white;
-  border-radius: 12px;
-  padding: 20px 24px;
-  text-align: left;
-  margin-bottom: 30px;
-}
-
-/* FILAS DE INFO */
-.confirmacion-datos p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 15px;
-  color: #333;
-}
-
 :root {
-    --primary: #34767e;
+    --primary: #4f7f63;
     --secondary: white;
     --terciary: black;
+    --fourth: #417256; 
     --bg: #f4f6f8;
     --error-bg: #fdecea;
     --error-text: #9b2c2c;
     --border-radius: 6px;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-/* ===== BOTONES ===== */
-.confirmacion-botones {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-/* BOTÓN PRINCIPAL */
-.btn-principal {
-  background: #4f7f62;
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 html {
@@ -228,33 +20,51 @@ html {
 }
 
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI", sans-serif;
     color: var(--terciary);
 }
 
+.confirmacion-botones {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-principal {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
 .btn-principal:hover {
-  background: #3f6b52;
+    background: var(--fourth);
 }
 
 /* BOTÓN SECUNDARIO */
 .btn-secundario {
-  background: white;
-  color: #4f7f62;
-  border: 2px solid #4f7f62;
-  padding: 12px 22px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .btn-secundario:hover {
-  background: #eef4f1;
+    background: #eef4f1;
 }
 
 section {
     min-height: 100vh;
-    padding-top: 100px; 
+    padding-top: 100px;
 }
 
 /*HEADER*/
@@ -289,7 +99,7 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: var(--secondary);
-    font-family: 'Neutra';
+    font-family: "Segoe UI", sans-serif;
     font-size: 1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -303,8 +113,8 @@ nav ul li a:hover {
 /*HERO SECTION*/
 #Inicio {
     background-image: url(../img/HeroSection.png);
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 
     display: flex;
@@ -312,7 +122,6 @@ nav ul li a:hover {
     align-items: center;
 
     text-align: center;
-    padding: 0 1.5rem;
 }
 
 @media (min-width: 1920px) and (min-height: 1080px) {
@@ -325,24 +134,26 @@ nav ul li a:hover {
 .centrado {
     margin-right: 8rem;
     max-width: 600px;
-    color: var(--secondary);
+
+    background-color: rgba(207, 216, 211, 0.50);
+    padding: 2.5rem;
+    border-radius: 16px;
+
+    color: var(--terciary);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     letter-spacing: 2px;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
 .centrado p {
-    font-size: 1.5rem;
-    font-weight: 300;
-    text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--terciary);
     margin-bottom: 2rem;
     line-height: 1.6;
     letter-spacing: 0.3rem;
@@ -361,7 +172,7 @@ h1 {
 }
 
 .centrado a:hover {
-    background-color: #285e64;
+    background-color: var(--fourth);
 }
 
 /*FOOTER*/
@@ -380,7 +191,7 @@ footer {
 .footer-info {
     display: flex;
     gap: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .footer-info p {
@@ -398,23 +209,26 @@ footer {
     color: var(--secondary);
     text-decoration: none;
     transition: opacity 0.3s ease;
-}   
+}
+
 footer img {
     height: 45px;
 }
+
 .footer-bottom {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 footer nav ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
-    font-family: 'Neutra';
+    font-family: "Segoe UI", sans-serif;
     text-transform: uppercase;
     font-size: 0.8rem;
 }
@@ -431,11 +245,163 @@ footer nav a:hover {
     background-color: var(--secondary);
 }
 
+/* SECCION RESERVA */
 
-/* Estilos para la tabla de turnos */
-/* ===============================
-   BASE
-   =============================== */
+/* Container */
+#Reserva {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 24px;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary);
+}
+
+/*GRID FORM */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+/* LABELS & INPUTS*/
+label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+input,
+select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #cfd8d3;
+    font-size: 14px;
+    transition: border 0.2s;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #5f9475;
+}
+
+/*ERRORES*/
+.input-error {
+    border-color: #c0392b;
+}
+
+.error-text {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 4px;
+}
+
+.error-box {
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+    color: #8a1f17;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.error-box ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+/*BOTÓN */
+button {
+    margin-top: 24px;
+    width: 100%;
+    padding: 12px;
+    background-color: #4f7f63;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3f6d55;
+}
+
+/* CONTENEDOR GENERAL CONFIRMACIÓN*/
+#contenedorConfirmacion {
+    max-width: 680px;
+    margin: 40px auto;
+    padding: 40px 32px;
+    background: #f6f8f7;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ICONO CHECK */
+.confirmacion-icono {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* TITULO */
+.confirmacion-titulo {
+    font-size: 22px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 28px;
+}
+
+/* TARJETA DATOS */
+.confirmacion-datos {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* FILAS DE INFO */
+.confirmacion-datos p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+
+/* ADMIN - Estilos para la tabla de turnos */
 
 .page {
     max-width: 1200px;
