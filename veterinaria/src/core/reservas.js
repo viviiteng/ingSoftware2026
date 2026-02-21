@@ -72,3 +72,12 @@ export function mapearServicio(valor) {
     if (valor.toLowerCase().includes("veterinaria")) return "veterinaria";
     return "estilismo";
 }
+
+if (typeof module !== "undefined") {
+module.exports = {
+    validarDatos,
+    profesionalDisponible,
+    hayDisponibilidad,
+    asignarProfesional,
+    mapearServicio
+};}
